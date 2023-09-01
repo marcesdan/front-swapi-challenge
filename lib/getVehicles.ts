@@ -1,12 +1,14 @@
-import wretch from "wretch"
+import wretch from "wretch";
 
-export default async function getVehicles({
-  page,
-}: {
-  page: number
-}) {
-  const { count: total, results: items }: { count: number, results: Array<{}>} = await wretch(`https://swapi.dev/api/vehicles?page=${page}`)
+export default async function getVehicles({ page }: { page: number }) {
+  const {
+    count: total,
+    results: items,
+  }: { count: number; results: Array<{}> } = await wretch(
+    `https://swapi.dev/api/vehicles?page=${page}`,
+    { mode: "cors" }
+  )
     .get()
-    .json()
-  return { items, total }
+    .json();
+  return { items, total };
 }
