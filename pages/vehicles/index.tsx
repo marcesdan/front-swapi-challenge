@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next'
-import { Layout, Page } from '@vercel/examples-ui'
+import { Page } from '@vercel/examples-ui'
 import getVehicles from '../../lib/getVehicles'
 import { PER_PAGE } from '../vehicles/[page]'
 import PaginationPage from '../../components/PaginationPage'
@@ -28,7 +28,5 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   }
 }
-
-Vehicles.Layout = Layout
 
 export default Vehicles

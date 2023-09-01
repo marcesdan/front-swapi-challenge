@@ -1,5 +1,4 @@
 import {
-  Layout,
   Text,
   Page,
   Button,
@@ -9,7 +8,7 @@ import {
 function Home() {
   return (
     <Page>
-      <section>
+      <section className='text-center'>
         <Text variant="h1" className="mb-6">
           Coding Challenge
         </Text>
@@ -18,7 +17,7 @@ function Home() {
         </Text>
       </section>
       <hr className="border-t border-accents-2 my-6" />
-      <section className="flex flex-col gap-3">
+      <section className="flex flex-col gap-3 text-center">
         <Link href="/starships">
           <Button>Go to starships page</Button>
         </Link>
@@ -29,7 +28,5 @@ function Home() {
     </Page>
   )
 }
-
-Home.Layout = Layout
 
 export default Home

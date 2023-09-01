@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next'
-import { Layout, Page } from '@vercel/examples-ui'
+import { Page } from '@vercel/examples-ui'
 import getStarships from '../../lib/getStarhips'
 import { PER_PAGE } from '../starships/[page]'
 import PaginationPage from '../../components/PaginationPage'
@@ -28,7 +28,5 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   }
 }
-
-Starships.Layout = Layout
 
 export default Starships

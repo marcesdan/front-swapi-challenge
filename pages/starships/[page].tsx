@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import React from 'react'
 import getStarships from '../../lib/getStarhips'
-import { Layout, Page } from '@vercel/examples-ui'
+import { Page } from '@vercel/examples-ui'
 import Head from 'next/head'
 import PaginationPage from '../../components/PaginationPage'
 
@@ -33,8 +33,6 @@ function PaginatedPage({ items, currentPage, totalItems }: PageProps) {
     </Page>
   )
 }
-
-PaginatedPage.Layout = Layout
 
 export const getStaticProps: GetStaticProps = async ({
   params,

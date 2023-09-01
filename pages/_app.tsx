@@ -1,22 +1,16 @@
-import type { AppProps } from 'next/app'
-import type { LayoutProps } from '@vercel/examples-ui/layout'
-
-import { getLayout } from '@vercel/examples-ui'
-
-import '@vercel/examples-ui/globals.css'
+import type { AppProps } from "next/app";
+import "@vercel/examples-ui/globals.css";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function App({ Component, pageProps }: AppProps) {
-  const Layout = getLayout<LayoutProps>(Component)
-
   return (
-    <Layout
-      title="Coding Challenge"
-      path="solutions/pagination-with-ssg"
-      description="Full Stack - Extending SWAPI The Star Wars API"
-    >
+    <div className="mx-auto h-screen flex flex-col">
+      <Navbar />
       <Component {...pageProps} />
-    </Layout>
-  )
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;
