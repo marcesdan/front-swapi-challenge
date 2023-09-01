@@ -1,9 +1,9 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import React from 'react'
-import getProducts from '../../lib/getProducts'
+import getProducts from '../../lib/getVehicles'
 import { Layout, Page } from '@vercel/examples-ui'
 import Head from 'next/head'
-import PaginationPage from '../../components/PaginatedPage'
+import PaginationPage from '../../components/PaginationPage'
 
 type PageProps = {
   products: any[]
@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps = async ({
   params,
 }: GetStaticPropsContext) => {
   const page = Number(params?.page) || 1
-  const { products, total } = await getProducts({ limit: PER_PAGE, page })
+  const { products, total } = await getProducts({ page })
 
   if (!products.length) {
     return {
@@ -48,11 +48,11 @@ export const getStaticProps: GetStaticProps = async ({
     }
   }
 
-  // Redirect the first page to `/category` to avoid duplicated content
+  // Redirect the first page to `/vehicles` to avoid duplicated content
   if (page === 1) {
     return {
       redirect: {
-        destination: '/category',
+        destination: '/vehicles',
         permanent: false,
       },
     }
@@ -70,9 +70,9 @@ export const getStaticProps: GetStaticProps = async ({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    // Prerender the next 5 pages after the first page, which is handled by the index page.
+    // Prerender the next 2 pages after the first page, which is handled by the index page.
     // Other pages will be prerendered at runtime.
-    paths: Array.from({ length: 5 }).map((_, i) => `/category/${i + 2}`),
+    paths: Array.from({ length: 2 }).map((_, i) => `/vehicles/${i + 2}`),
     // Block the request for non-generated pages and cache them in the background
     fallback: 'blocking',
   }

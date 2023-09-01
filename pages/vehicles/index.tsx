@@ -1,10 +1,10 @@
 import { GetStaticProps } from 'next'
 import { Layout, Page } from '@vercel/examples-ui'
-import getProducts from '../../lib/getProducts'
-import { PER_PAGE } from '../category/[page]'
-import PaginationPage from '../../components/PaginatedPage'
+import getProducts from '../../lib/getVehicles'
+import { PER_PAGE } from '../vehicles/[page]'
+import PaginationPage from '../../components/PaginationPage'
 
-function Category({ products, totalProducts, currentPage }: any) {
+function Vehicles({ products, totalProducts, currentPage }: any) {
   return (
     <Page>
       <PaginationPage
@@ -18,7 +18,7 @@ function Category({ products, totalProducts, currentPage }: any) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { products, total } = await getProducts({ limit: PER_PAGE, page: 1 })
+  const { products, total } = await getProducts({ page: 1 })
 
   return {
     props: {
@@ -29,6 +29,6 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-Category.Layout = Layout
+Vehicles.Layout = Layout
 
-export default Category
+export default Vehicles

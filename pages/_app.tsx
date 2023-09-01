@@ -10,9 +10,9 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <Layout
-      title="Pagination with SSG"
+      title="Coding Challenge"
       path="solutions/pagination-with-ssg"
-      description="Learn how to do pagination with SSG"
+      description="Full Stack - Extending SWAPI The Star Wars API"
     >
       <Component {...pageProps} />
     </Layout>
