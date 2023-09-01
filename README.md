@@ -1,12 +1,12 @@
 # Front-End for the SWAPI code challenge
 
-The solution proxy requests to SWAPI and extend the results with the amount of units for starships and vehicles
+The solution proxy requests to SWAPI and extend the results with the quantity of units for starships and vehicles
 
 This example use a page based pagination with [SSG](https://nextjs.org/docs/basic-features/data-fetching/get-static-props) in Next.js.
 
 ## Demo
 
-<https://front-swapi-challenge.vercel.app/>
+Check out the live demo here: <https://front-swapi-challenge.vercel.app/>
 
 ## How it works
 
@@ -16,7 +16,7 @@ start.
 The example showcases the starships and vehicles from <https://swapi.dev/>
 
 - There are 36 starships and 39 vehicles
-- There are 10 results per page for a total of 4 pages, where 2 are pre-generated with `getStaticPaths`
+- Each page displays 10 results, resulting in a total of 4 pages. Two of these pages are pre-generated using `getStaticPaths`.
 
 ```ts
 // pages/starships/[page].tsx
@@ -32,13 +32,18 @@ export const getStaticPaths = async () => {
 }
 ```
 
-- Then the data from SWAPI is merged with the extended part at client time as you can see at `/hooks/useExtendedItems.js`
-- And order by the amount of units
+- The data from SWAPI is then merged with the extended part at the client-side, as demonstrated in `/hooks/useExtendedItems.js`.
+- The results are also ordered by the quantity of units.
 
 ## How to Use
 
-Run Next.js in development mode:
+If you'd like to set up an end-to-end demo on your local environment, follow these steps:
+
+1. Clone the serverless repository from <https://github.com/marcesdan/serverless-swapi-challenge>.
+2. Follow the instructions in that repository to run it locally.
+3. Once you've completed these steps, you can run Next.js in development mode using the following command:
 
 ```bash
+cp .env.example .env.local
 npm run dev
 ```
