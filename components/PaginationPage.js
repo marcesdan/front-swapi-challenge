@@ -7,10 +7,10 @@ import StarshipCard from "./StarshipCard";
 import useExtendedItems from "../hooks/useExtendedIItems";
 import {orderBy} from 'lodash-es'
 
-const PaginationPage = ({ currentPage, totalProducts, perPage, products }) => {
+const PaginationPage = ({ currentPage, totalItems, perPage, items }) => {
   const { asPath } = useRouter();
   const base = asPath.split("/")[1];
-  const extendedItems = useExtendedItems(products, base);
+  const extendedItems = useExtendedItems(items, base);
   const sortedItems = useMemo(() => orderBy(extendedItems, 'units', 'desc'), [extendedItems])
   const Card = {
     vehicles: VehicleCard,
@@ -20,7 +20,7 @@ const PaginationPage = ({ currentPage, totalProducts, perPage, products }) => {
     <div>
       <Text variant="h1" className="capitalize text-center">{base}</Text>
       <Pagination
-        totalItems={totalProducts}
+        totalItems={totalItems}
         currentPage={currentPage}
         itemsPerPage={perPage}
         renderPageLink={(page) => `/${base}/${page}`}

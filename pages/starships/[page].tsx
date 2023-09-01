@@ -1,19 +1,19 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import React from 'react'
-import getProducts from '../../lib/getStarhips'
+import getStarships from '../../lib/getStarhips'
 import { Layout, Page } from '@vercel/examples-ui'
 import Head from 'next/head'
 import PaginationPage from '../../components/PaginationPage'
 
 type PageProps = {
-  products: any[]
+  items: any[]
   currentPage: number
-  totalProducts: number
+  totalItems: number
 }
 
 export const PER_PAGE = 10
 
-function PaginatedPage({ products, currentPage, totalProducts }: PageProps) {
+function PaginatedPage({ items, currentPage, totalItems }: PageProps) {
   return (
     <Page>
       <Head>
@@ -25,9 +25,9 @@ function PaginatedPage({ products, currentPage, totalProducts }: PageProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PaginationPage
-        products={products}
+        items={items}
         currentPage={currentPage}
-        totalProducts={totalProducts}
+        totalItems={totalItems}
         perPage={PER_PAGE}
       />
     </Page>
@@ -40,9 +40,9 @@ export const getStaticProps: GetStaticProps = async ({
   params,
 }: GetStaticPropsContext) => {
   const page = Number(params?.page) || 1
-  const { products, total } = await getProducts({ page })
+  const { items, total } = await getStarships({ page })
 
-  if (!products.length) {
+  if (!items.length) {
     return {
       notFound: true,
     }
@@ -60,8 +60,8 @@ export const getStaticProps: GetStaticProps = async ({
 
   return {
     props: {
-      products,
-      totalProducts: total,
+      items,
+      totalItems: total,
       currentPage: page,
     },
     revalidate: 60 * 60 * 24, // <--- ISR cache: once a day

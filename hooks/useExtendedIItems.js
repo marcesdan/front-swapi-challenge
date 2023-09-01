@@ -18,14 +18,11 @@ export default function useExtendedItems(items, base) {
       }[base]());
     }
     if (isClient && !extendedPart) {
-      console.log('fetching')
       fetchExtendedItems();
     } else if (extendedPart) {
-      console.log('setting result', {extendedPart})
       setResult(mergeItemsFromSwapiWithExtendedApi(items, extendedPart))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isClient, items, extendedPart]);
-  console.log('the result issss....', {result})
   return result || items
 }
