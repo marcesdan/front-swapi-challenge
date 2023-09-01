@@ -25,7 +25,7 @@ const PaginationPage = ({ currentPage, totalItems, perPage, items }) => {
         itemsPerPage={perPage}
         renderPageLink={(page) => `/${base}/${page}`}
       />
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {sortedItems.map((item) => (
           <Card key={item.name} {...item} />
         ))}
